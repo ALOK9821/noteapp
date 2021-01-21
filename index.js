@@ -103,11 +103,16 @@ fetch("https://type.fit/api/quotes").then(function(response) {
   }).then(function(data) {
       let myquote = JSON.stringify(data[count]);
     let quot= document.getElementById('quote');
-    quot.innerHTML = `<b>${myquote.substr(9,500)}</b>`;
+    let ans = "";
+    for(let i=8;i<myquote.length;i++){
+        if(myquote[i]!= `"` && myquote[i]!= `}`){
+            ans+=myquote[i];
+        }
+    }
+    quot.innerHTML = `<b>${ans}</b>`;
    console.log(data[count]);
 });
 }
-
 
 
 
