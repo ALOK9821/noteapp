@@ -101,19 +101,12 @@ function quote(count){
 fetch("https://type.fit/api/quotes").then(function(response) {
     return response.json();
   }).then(function(data) {
-      let myquote = JSON.stringify(data[count]);
     let quot= document.getElementById('quote');
-    let ans = "";
-    for(let i=8;i<myquote.length;i++){
-        if(myquote[i]!= `"` && myquote[i]!= `}`){
-            ans+=myquote[i];
-        }
-    }
-    quot.innerHTML = `<b>${ans}</b>`;
+    quot.innerHTML = `<b>${data[count].text}<br> 
+    Author:- ${data[count].author}</b>`;
    console.log(data[count]);
 });
 }
-
 
 
 
